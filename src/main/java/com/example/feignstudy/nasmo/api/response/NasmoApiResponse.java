@@ -8,16 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class NasmoApiResponse extends ApiStatusResponse {
+public class NasmoApiResponse {
     private int statusCode;
     private Nasmo body;
-
-    public Boolean isOk(){
-        return statusCode == 200;
-    }
-
-    public Boolean isFail(){
-        return !isOk();
-    }
 
 }

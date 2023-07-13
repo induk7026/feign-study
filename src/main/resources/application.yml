@@ -1,1 +1,41 @@
+spring:
+  application:
+    name: passorder-auth-service
+  profiles:
+    active: local
+
+  #---- Spring Mvc Setting ----
+  mvc:
+    format:
+      date: yyyy-MM-dd
+
+  main:
+    allow-bean-definition-overriding: true
+#---- Logging Setting ----
+logging:
+  level:
+    web: DEBUG
+    kr.co.authservice.passorder.*: DEBUG
+    type: INFO
+
+#---- Feign Client Config ----
+feign:
+  autoconfiguration:
+    jackson:
+      enabled: true
+  client:
+    config:
+      default:
+        logger-level: full
+        connectTimeout: 60000
+        readTimeout: 60000
+    demoClient: # ?? FeignClient? ??(@FeignClient? name ???? ??? ?)
+        connectionTimeout: 3000
+        readTimeout: 3000
+
+external:
+  url:
+    nasmo: https://0l6lglqx6b.execute-api.ap-northeast-2.amazonaws.com/qa/gdr/nasmo
+
+
 

@@ -1,10 +1,15 @@
 package com.example.feignstudy.nasmo.api.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Getter
-public class FindIdRequest {
-    private int value;
+@NoArgsConstructor
+@AllArgsConstructor
+public class LoginRequest {
+    private String email;
+    private String password;
 }

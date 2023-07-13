@@ -1,4 +1,4 @@
-package com.example.feignstudy.nasmo.api;
+package com.example.feignstudy.config;
 
 import static feign.FeignException.errorStatus;
 
@@ -9,7 +9,7 @@ import feign.codec.ErrorDecoder;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class NasmoErrorDecoder implements ErrorDecoder {
+public class FeignErrorDecoder implements ErrorDecoder {
 
     private static final ObjectMapper mapper;
 
