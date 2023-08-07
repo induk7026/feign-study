@@ -1,18 +1,18 @@
 package com.example.feignstudy.nasmo.api.response;
 
 import com.example.feignstudy.nasmo.domain.AcademyNasmo;
-import com.example.feignstudy.nasmo.domain.Nasmo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
-public class NasmoApiResponse {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class AcademyNasmoApiResponse {
+
     private int statusCode;
     private List<NasmoDto> body;
 
@@ -53,7 +53,7 @@ public class NasmoApiResponse {
         @JsonProperty("distance")
         private Float distance;
         @JsonProperty("club_no")
-        private String clubNo;
+        private int clubNo;
         @JsonProperty("club_name")
         private String clubName;
         @JsonProperty("club_group_code")
@@ -86,7 +86,7 @@ public class NasmoApiResponse {
                     .videoUrl(this.fileNm)
                     .faceAngle(this.faceAngle)
                     .distance(this.distance)
-                    .clubNo(this.clubCode)
+                    .clubNo(this.clubNo)
                     .clubName(this.clubName)
                     .clubNo(this.clubCode)
                     .sideImage(this.bimgNm)
@@ -96,5 +96,4 @@ public class NasmoApiResponse {
                     .build();
         }
     }
-
 }

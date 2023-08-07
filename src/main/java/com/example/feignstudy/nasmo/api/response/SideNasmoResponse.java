@@ -1,27 +1,26 @@
 package com.example.feignstudy.nasmo.api.response;
 
 import com.example.feignstudy.nasmo.domain.AcademyNasmo;
-import com.example.feignstudy.nasmo.domain.Nasmo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
-public class NasmoApiResponse {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class SideNasmoResponse {
+
     private int statusCode;
-    private List<NasmoDto> body;
+    private List<SideNasmo> body;
 
     public AcademyNasmo convert(){
-        return body.stream().findFirst().get().convert();
+        return this.body.stream().findFirst().get().convert();
     }
-    @Getter
-    @Setter
-    public static class NasmoDto {
+    public static class SideNasmo {
+
         @JsonProperty("view_type")
         private int viewType;
         @JsonProperty("usr_no")
@@ -30,6 +29,8 @@ public class NasmoApiResponse {
         private int swingPath;
         @JsonProperty("store_method_code")
         private int storeMethodCode;
+        @JsonProperty("side_nasmo")
+        private int sideNasmo;
         @JsonProperty("regdate")
         private String regdate;
         @JsonProperty("nasmo_id")
@@ -38,8 +39,6 @@ public class NasmoApiResponse {
         private int movNo;
         @JsonProperty("mode_code")
         private int modeCode;
-        @JsonProperty("img_nm")
-        private String imgNm;
         @JsonProperty("genic_gubun")
         private int genicGubun;
         @JsonProperty("game_gubun")
@@ -76,25 +75,24 @@ public class NasmoApiResponse {
         private String ball;
 
         public AcademyNasmo convert(){
+
             return AcademyNasmo.builder()
-                    .viewType(this.viewType)
-                    .usrNo(this.usrNo)
-                    .regdate(this.regdate)
-                    .nasmoId(this.nasmoId)
-                    .videoId(this.movNo)
-                    .image(this.imgNm)
-                    .videoUrl(this.fileNm)
-                    .faceAngle(this.faceAngle)
-                    .distance(this.distance)
-                    .clubNo(this.clubCode)
-                    .clubName(this.clubName)
-                    .clubNo(this.clubCode)
-                    .sideImage(this.bimgNm)
-                    .ballType(this.ballType)
-                    .ballSpeed(this.ballSpeed)
-                    .ballAngle(this.ballAngle)
-                    .build();
+                .viewType(this.viewType)
+                .usrNo(this.usrNo)
+                .regdate(this.regdate)
+                .nasmoId(this.nasmoId)
+                .videoId(this.movNo)
+                .videoUrl(this.fileNm)
+                .faceAngle(this.faceAngle)
+                .distance(this.distance)
+                .clubName(this.clubName)
+                .clubNo(this.clubCode)
+                .videoId(this.videoId)
+                .sideImage(this.bimgNm)
+                .ballType(this.ballType)
+                .ballSpeed(this.ballSpeed)
+                .ballAngle(this.ballAngle)
+                .build();
         }
     }
-
 }

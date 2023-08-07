@@ -8,6 +8,8 @@ spring:
   mvc:
     format:
       date: yyyy-MM-dd
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
   main:
     allow-bean-definition-overriding: true
@@ -36,6 +38,4 @@ feign:
 external:
   url:
     nasmo: https://0l6lglqx6b.execute-api.ap-northeast-2.amazonaws.com/qa/gdr/nasmo
-
-
-
+    shot: https://0l6lglqx6b.execute-api.ap-northeast-2.amazonaws.com/qa/gdr/shot
